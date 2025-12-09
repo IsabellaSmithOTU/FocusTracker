@@ -105,7 +105,7 @@ If you wish to retrain the model or experiment with the architecture:
 
 -----
 
-## 🔒 Privacy
+## Privacy
 
 This tool was designed with privacy as the \#1 priority.
 
@@ -115,7 +115,7 @@ This tool was designed with privacy as the \#1 priority.
 
 -----
 
-## 📄 License
+## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
