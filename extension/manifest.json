@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "Engagement Tracker",
+  "version": "1.0",
+  "description": "AI-powered engagement tracking with webcam",
+  
+  "permissions": [
+    "storage",
+    "notifications"
+  ],
+  
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "tracker.html",
+        "info.html",
+        "settings.html",
+        "stats.html"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}

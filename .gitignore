@@ -1,0 +1,9 @@
+# Ignore Datasets
+DAiSEE/
+FER-2013/
+frames_out/
+*.mp4
+*.avi
+__pycache__/
+*.pth
+*.onnx

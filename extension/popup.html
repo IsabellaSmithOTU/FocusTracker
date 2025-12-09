@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      width: 400px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+    }
+    
+    .container {
+      padding: 24px;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: linear-gradient(to right, #fff, #e0e7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .header p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    .status-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .status-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    
+    .status-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+      font-weight: 600;
+    }
+    
+    .status-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 10px #4ade80;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    .status-indicator.inactive {
+      background: #ef4444;
+      box-shadow: 0 0 10px #ef4444;
+    }
+    
+    .engagement-level {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .engagement-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    
+    .engagement-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      background: linear-gradient(90deg, #4ade80, #22c55e);
+    }
+    
+    .engagement-fill.level-0 {
+      width: 25%;
+      background: linear-gradient(90deg, #ef4444, #dc2626);
+    }
+    
+    .engagement-fill.level-1 {
+      width: 50%;
+      background: linear-gradient(90deg, #f59e0b, #d97706);
+    }
+    
+    .engagement-fill.level-2 {
+      width: 75%;
+      background: linear-gradient(90deg, #4ade80, #22c55e);
+    }
+    
+    .engagement-fill.level-3 {
+      width: 100%;
+      background: linear-gradient(90deg, #3b82f6, #2563eb);
+    }
+    
+    .confidence {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+    
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .btn {
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .btn-primary {
+      background: rgba(255, 255, 255, 0.95);
+      color: #667eea;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-primary:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+    
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .btn-stop {
+      background: rgba(239, 68, 68, 0.2);
+      color: #fff;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    
+    .btn-stop:hover {
+      background: rgba(239, 68, 68, 0.3);
+    }
+    
+    .quick-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .stat-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .stat-label {
+      font-size: 11px;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    
+    .footer-link {
+      font-size: 13px;
+      color: #fff;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    
+    .footer-link:hover {
+      opacity: 1;
+    }
+    
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎯 Focus Tracker</h1>
+      <p>AI-Powered Engagement Monitor</p>
+    </div>
+    
+    <div class="status-card">
+      <div class="status-header">
+        <span class="status-label">Status</span>
+        <div class="status-indicator" id="statusIndicator"></div>
+      </div>
+      <div class="engagement-level" id="engagementLevel">Ready to Start</div>
+      <div class="engagement-bar">
+        <div class="engagement-fill" id="engagementFill"></div>
+      </div>
+      <div class="confidence" id="confidenceText">Click Start to begin tracking</div>
+    </div>
+    
+    <div class="quick-stats" id="quickStats" style="display: none;">
+      <div class="stat-box">
+        <div class="stat-value" id="sessionTime">0:00</div>
+        <div class="stat-label">Session Time</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="avgEngagement">--</div>
+        <div class="stat-label">Avg Level</div>
+      </div>
+    </div>
+    
+    <div class="action-buttons">
+      <button class="btn btn-primary" id="startBtn">
+        <span>▶</span> Start Tracking
+      </button>
+      <button class="btn btn-stop hidden" id="stopBtn">
+        <span>⏹</span> Stop Tracking
+      </button>
+      <button class="btn btn-secondary" id="infoBtn">
+        <span>ℹ️</span> How It Works
+      </button>
+    </div>
+    
+    <div class="footer-links">
+      <a href="#" class="footer-link" id="settingsLink">Settings</a>
+      <a href="#" class="footer-link" id="statsLink">Statistics</a>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

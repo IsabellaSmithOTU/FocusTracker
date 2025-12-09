@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>How It Works - Focus Tracker</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: #fff;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .header p {
+      font-size: 20px;
+      opacity: 0.9;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .card h2 {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .card h3 {
+      font-size: 20px;
+      margin: 24px 0 12px 0;
+      opacity: 0.95;
+    }
+    
+    .card p {
+      font-size: 16px;
+      line-height: 1.6;
+      opacity: 0.9;
+      margin-bottom: 16px;
+    }
+    
+    .card ul {
+      margin: 16px 0;
+      padding-left: 24px;
+    }
+    
+    .card li {
+      font-size: 16px;
+      line-height: 1.8;
+      opacity: 0.9;
+      margin-bottom: 8px;
+    }
+    
+    .levels-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    
+    .level-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .level-box .emoji {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+    
+    .level-box .title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .level-box .description {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    
+    .level-0 { border-color: #ef4444; }
+    .level-1 { border-color: #f59e0b; }
+    .level-2 { border-color: #4ade80; }
+    .level-3 { border-color: #3b82f6; }
+    
+    .flow-diagram {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+      text-align: center;
+    }
+    
+    .flow-step {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 16px 24px;
+      border-radius: 8px;
+      margin: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .flow-arrow {
+      font-size: 24px;
+      margin: 0 8px;
+      opacity: 0.6;
+    }
+    
+    .privacy-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 197, 94, 0.2);
+      border: 2px solid rgba(34, 197, 94, 0.4);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+    
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #667eea;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      margin-top: 32px;
+    }
+    
+    .btn-back:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    code {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎯 How Focus Tracker Works</h1>
+      <p>AI-powered engagement monitoring explained</p>
+    </div>
+    
+    <div class="card">
+      <h2>🧠 The Science Behind It</h2>
+      <p>
+        Focus Tracker uses a deep learning model trained on the <strong>DAiSEE dataset</strong> 
+        (Dataset for Affective States in E-Environments), which contains thousands of videos 
+        of students engaged in online learning activities.
+      </p>
+      <p>
+        Our <strong>ResNet-18 based architecture</strong> analyzes your facial expressions, 
+        head pose, and eye movements across multiple frames to accurately predict your 
+        engagement level in real-time.
+      </p>
+    </div>
+    
+    <div class="card">
+      <h2>📊 Engagement Levels</h2>
+      <p>The model classifies your engagement into four distinct levels:</p>
+      
+      <div class="levels-grid">
+        <div class="level-box level-0">
+          <div class="emoji">😤</div>
+          <div class="title">Very Low</div>
+          <div class="description">Distracted, not focused on task</div>
+        </div>
+        
+        <div class="level-box level-1">
+          <div class="emoji">😴</div>
+          <div class="title">Low</div>
+          <div class="description">Minimal attention, low energy</div>
+        </div>
+        
+        <div class="level-box level-2">
+          <div class="emoji">😊</div>
+          <div class="title">High</div>
+          <div class="description">Engaged and attentive</div>
+        </div>
+        
+        <div class="level-box level-3">
+          <div class="emoji">🚀</div>
+          <div class="title">Very High</div>
+          <div class="description">Deeply focused and productive</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>⚙️ How It Works</h2>
+      
+      <div class="flow-diagram">
+        <div class="flow-step">📸 Capture Frame</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">🖼️ Process Image</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">🧠 AI Analysis</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">📊 Update Dashboard</div>
+      </div>
+      
+      <h3>The Process:</h3>
+      <ul>
+        <li><strong>Frame Capture:</strong> Every 8 seconds, we capture a snapshot from your webcam</li>
+        <li><strong>Batch Processing:</strong> We analyze 5 consecutive frames together for better accuracy</li>
+        <li><strong>Feature Extraction:</strong> ResNet-18 extracts 512 visual features from each frame</li>
+        <li><strong>Temporal Pooling:</strong> Features are averaged across frames to capture temporal patterns</li>
+        <li><strong>Classification:</strong> A final layer predicts your engagement level (0-3)</li>
+        <li><strong>Consistency Check:</strong> Notifications only appear after 30 seconds of consistent engagement</li>
+      </ul>
+      
+      <h3>Technical Details:</h3>
+      <ul>
+        <li><strong>Model Architecture:</strong> ResNet-18 backbone + custom classifier</li>
+        <li><strong>Input Size:</strong> 64×64 pixels (5 frames per prediction)</li>
+        <li><strong>Processing:</strong> Local Python API (Flask) running on your machine</li>
+        <li><strong>Normalization:</strong> ImageNet mean/std for optimal performance</li>
+        <li><strong>Inference Time:</strong> ~200-300ms per prediction</li>
+      </ul>
+    </div>
+    
+    <div class="card">
+      <h2>🔒 Privacy & Security</h2>
+      <p>
+        Your privacy is our top priority. Here's what you need to know:
+      </p>
+      <ul>
+        <li><strong>100% Local Processing:</strong> All analysis happens on YOUR computer</li>
+        <li><strong>No Cloud Uploads:</strong> Webcam frames never leave your device</li>
+        <li><strong>No Data Storage:</strong> Frames are processed in memory and immediately discarded</li>
+        <li><strong>No Tracking:</strong> We don't collect, store, or transmit any personal data</li>
+        <li><strong>Open Source:</strong> You can inspect the code to verify everything</li>
+      </ul>
+      
+      <div class="privacy-badge">
+        <span>🔐</span>
+        <span>100% Private & Secure</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>💡 Tips for Best Results</h2>
+      <ul>
+        <li>Ensure good lighting on your face</li>
+        <li>Position your webcam at eye level</li>
+        <li>Sit at a comfortable distance from the camera</li>
+        <li>Avoid covering your face with hands or objects</li>
+        <li>Let the model run for a few minutes to calibrate</li>
+      </ul>
+    </div>
+    
+    <div style="text-align: center;">
+      <a href="#" class="btn-back" onclick="window.close(); return false;">
+        <span>←</span> Back to Dashboard
+      </a>
+    </div>
+  </div>
+</body>
+</html>
