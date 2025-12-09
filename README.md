@@ -69,7 +69,7 @@ Because the training datasets and model files are large, they are hosted externa
 1.  Open Google Chrome and navigate to `chrome://extensions`.
 2.  Toggle **Developer mode** (top right corner).
 3.  Click **Load unpacked**.
-4.  Select the `ChromeExtension` folder inside this repository.
+4.  Select the `extension` folder inside this repository.
 
 -----
 
